@@ -22,7 +22,7 @@ public class CompuertaOR : Compuerta
     {
         if (Entradas.Count != 2)
         {
-            throw new IndexOutOfRangeException("La compuerta no tiene 2 entradas");
+            throw new CantidadDeEntradasException("La compuerta no tiene 2 entradas");
         }
         foreach (var element in Entradas)
         {   

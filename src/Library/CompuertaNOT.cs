@@ -22,7 +22,7 @@ public class CompuertaNOT : Compuerta
     {
         if (Entradas.Count != 1)
         {
-            throw new IndexOutOfRangeException("La compuerta no tiene 1 entrada");
+            throw new CantidadDeEntradasException("La compuerta no tiene 1 entrada");
         }
         return !Entradas.First().Value.Calcular();
     }

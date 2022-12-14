@@ -4,32 +4,159 @@
         <name>Library</name>
     </assembly>
     <members>
-        <member name="T:ClassLibrary.Train">
+        <member name="T:Library.CantidadDeEntradasException">
             <summary>
-            Esta clase representa un tren muy básico.
+            Excepción para detectar una cantidad de entradas inválidas
             </summary>
         </member>
-        <member name="P:ClassLibrary.Train.IsEngineStarted">
+        <member name="M:Library.CantidadDeEntradasException.#ctor(System.String)">
             <summary>
-            Obtiene un valor que indica si las maquinas del tren han sido encendidas o no.
+            Excepción para detectar una cantidad de entradas inválidas
             </summary>
-            <value><c>true</c> si las máquinas fueron encendidas, <c>false</c> en caso contrario.</value>
+            <param name="mensaje"></param>
+            <returns></returns>
         </member>
-        <member name="M:ClassLibrary.Train.StartEngines">
+        <member name="T:Library.Compuerta">
             <summary>
-            Enciende las máquinas del tren.
+            Clase madre de compuertas
             </summary>
-            <returns>
-            <c>true</c> si las máquinas pueden ser encendidas, <c>false</c> en caso contrario.
-            </returns>
         </member>
-        <member name="M:ClassLibrary.Train.StopEngines">
+        <member name="M:Library.Compuerta.#ctor(System.String)">
             <summary>
-            Detiene las máquinas del tren.
+            Constructor de compuerta que recibe como parametro un nombre
             </summary>
-            <returns>
-            <c>true</c> si las máquinas pueden ser detenidas, <c>false</c> en caso contrario.
-            </returns>
+            <param name="nombre"></param>
+        </member>
+        <member name="P:Library.Compuerta.Nombre">
+            <summary>
+            Nombre de la compuerta
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Library.Compuerta.Entradas">
+            <summary>
+            Diccionario que guarda cada nombre de compuerta con su valor
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:Library.Compuerta.AgregarEntrada(System.String,Library.IInput)">
+            <summary>
+            Agrega una entrada con un nombre y un valor. Si el nombre ya existe, le cambia el valor a esa entrada.
+            </summary>
+            <param name="nombre"></param>
+            <param name="valor"></param>
+        </member>
+        <member name="M:Library.Compuerta.Calcular">
+            <summary>
+            Método para conocer el valor de una compuerta
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Library.CompuertaAND">
+            <summary>
+            Compuerta AND 
+            </summary>
+        </member>
+        <member name="M:Library.CompuertaAND.#ctor(System.String)">
+            <summary>
+            Constructor con un nombre para la compuerta
+            </summary>
+            <param name="nombre"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Library.CompuertaAND.Calcular">
+            <summary>
+            Devuelve el resultado de la compuerta AND, y tira una excepció si no tiene dos entradas.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Library.CompuertaNOT">
+            <summary>
+            Compuerta NOT
+            </summary>
+        </member>
+        <member name="M:Library.CompuertaNOT.#ctor(System.String)">
+            <summary>
+            Constructor con un nombre para la compuerta
+            </summary>
+            <param name="nombre"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Library.CompuertaNOT.Calcular">
+            <summary>
+            Devuelve el resultado de la compuerta NOT y tira una excepción si no tiene una entrada
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Library.CompuertaOR">
+            <summary>
+            Compuerta OR
+            </summary>
+        </member>
+        <member name="M:Library.CompuertaOR.#ctor(System.String)">
+            <summary>
+            Constructor con un nombre para la compuerta
+            </summary>
+            <param name="nombre"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Library.CompuertaOR.Calcular">
+            <summary>
+            Devuelve el resultado de la compuerta OR y tira una excepción si no tiene dos entradas
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Library.ICompuerta">
+            <summary>
+            Interface de compuertas
+            </summary>
+        </member>
+        <member name="M:Library.ICompuerta.AgregarEntrada(System.String,Library.IInput)">
+            <summary>
+            Método para agregar entradas o cambiar el valor a una ya existente
+            </summary>
+            <param name="nombre"></param>
+            <param name="valor"></param>
+        </member>
+        <member name="M:Library.ICompuerta.Calcular">
+            <summary>
+            Calcula el valor de la compuerta en base a su/s entradas
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Library.IInput">
+            <summary>
+            Interface de entradas para que el diccionario pueda tomar un bool o una compuerta
+            </summary>
+        </member>
+        <member name="M:Library.IInput.Calcular">
+            <summary>
+            Devuelve el valor de la entrada
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Library.LogicInput">
+            <summary>
+            Clase para simular un bool, dandole el tipo IInput
+            </summary>
+        </member>
+        <member name="M:Library.LogicInput.#ctor(System.Boolean)">
+            <summary>
+            Constructor que asigna un valor a el LogicInput
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="P:Library.LogicInput.Value">
+            <summary>
+            Variable que guarda el valor true o false
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:Library.LogicInput.Calcular">
+            <summary>
+            Retorna el v de la variable Value
+            </summary>
+            <returns></returns>
         </member>
     </members>
 </doc>

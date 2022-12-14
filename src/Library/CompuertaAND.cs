@@ -21,15 +21,15 @@ public class CompuertaAND : Compuerta
     {
         if (Entradas.Count != 2)
         {
-            throw new IndexOutOfRangeException("La compuerta no tiene 2 entradas");
+            throw new CantidadDeEntradasException("La compuerta no tiene 2 entradas");
         }
-            foreach (var element in Entradas)
+        foreach (var element in Entradas)
+        {
+            if (!element.Value.Calcular())
             {
-                if (!element.Value.Calcular())
-                {
-                    return false;
-                }
+                return false;
             }
-            return true;
+        }
+        return true;
     }
 }

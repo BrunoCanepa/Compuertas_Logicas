@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 namespace Library;
 /// <summary>
@@ -11,6 +12,10 @@ public abstract class Compuerta : IInput, ICompuerta
     /// <param name="nombre"></param>
     public Compuerta(string nombre)
     {
+        if (nombre == "" | nombre == null)
+        {
+            throw new ArgumentException("El nombre no debe estar vacío");
+        }
         this.Nombre = nombre;
         this.Entradas = new Dictionary<string, IInput>();
     }

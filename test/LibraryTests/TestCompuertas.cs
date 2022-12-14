@@ -1,3 +1,4 @@
+using System;
 namespace LibraryTests;
 /// <summary>
 /// Clase de tests
@@ -24,7 +25,7 @@ public class Tests
             and1.Calcular();
             Assert.Fail();
         }
-        catch(System.IndexOutOfRangeException)
+        catch(CantidadDeEntradasException)
         {
             Assert.Pass();
         }
@@ -42,7 +43,7 @@ public class Tests
             or1.Calcular();
             Assert.Fail();
         }
-        catch(System.IndexOutOfRangeException)
+        catch(CantidadDeEntradasException)
         {
             Assert.Pass();
         }
@@ -67,7 +68,7 @@ public class Tests
             not1.Calcular();
             Assert.Fail();
         }
-        catch(System.IndexOutOfRangeException)
+        catch(CantidadDeEntradasException)
         {
             Assert.Pass();
         }
@@ -91,5 +92,30 @@ public class Tests
         CompuertaNOT not3 = new CompuertaNOT("NOT-3");
         not3.AgregarEntrada(or2.Nombre, or2);
         Assert.False(not3.Calcular());
-    }    
+    }   
+    /// <summary>
+    /// Testea la excepción de nombre vacío o nulo
+    /// </summary>
+    [Test]
+    public void ExceptionNameTest()
+    {
+        try
+        {
+            CompuertaAND and1 = new CompuertaAND("");
+            Assert.Fail();
+        }
+        catch(System.ArgumentException)
+        {
+            Assert.Pass();
+        }
+        try
+        {
+            CompuertaAND and1 = new CompuertaAND(null);
+            Assert.Fail();
+        }
+        catch(System.ArgumentException)
+        {
+            Assert.Pass();
+        }
+    }
 }
